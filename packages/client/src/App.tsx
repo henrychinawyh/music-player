@@ -1,26 +1,17 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import RouterWrapper from "./routers";
+import { connect } from "react-redux";
+import styles from "./app.less";
+import { useEffect } from "react";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+function App(props: any) {
+  const {dispatch,login } = props || {}
+
+
+  useEffect(() => {
+
+  },[]);
+
+  return <div className={styles.app}><RouterWrapper /></div>;
 }
 
-export default App;
+export default connect((state) => state)(App);
