@@ -1,10 +1,10 @@
 import { all, takeEvery } from "redux-saga/effects";
 
-import { isLogin } from "./login"; // 登录的异步处理
+import { saveInfo } from "./login"; // 登录的异步处理
 
 // 登录Saga
 function* loginSagas() {
-  yield takeEvery("isLogin", isLogin);
+  // yield takeEvery("saveInfo", saveInfo);
 }
 
 function* rootSaga() {

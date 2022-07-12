@@ -1,14 +1,51 @@
-import LoginPage from '../pages/Login'
+// import { lazy } from "react";
+
+import Login from "../pages/Login";
+import Main from "../pages/Main";
+import MainPage from "../pages/MainPage";
+import MusicMainPage from '../pages/MusicMainPage'
+
+// const routes = [
+//   {
+//     path: "/",
+//     // redirect:'/login'
+//     element: lazy(() => import("../pages/Main")),
+//     children: [
+//       {
+//         path: "main", // 我的音乐主页
+//         element: lazy(() => import("../pages/MusicMainPage")),
+//       },
+//       {
+//         path: "mainPage",
+//         element: lazy(() => import("../pages/MainPage")),
+//       },
+//     ],
+//   },
+//   {
+//     path: "/login",
+//     element: lazy(() => import("../pages/Login")),
+//   },
+// ];
 
 const routes = [
   {
     path: "/",
     // redirect:'/login'
-    element: <LoginPage />
+    element: <Main />,
+    children: [
+      {
+        path: "main", // 我的音乐主页
+        element: <MusicMainPage />,
+      },
+      {
+        path: "mainPage",
+        element: <MainPage />,
+      },
+    ],
   },
   {
     path: "/login",
-    element: <LoginPage />
+    element: <Login />,
   },
 ];
 

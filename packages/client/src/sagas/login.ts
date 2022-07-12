@@ -1,10 +1,11 @@
 import { put } from "redux-saga/effects";
 
-function* isLogin(action: any) {
+// 存储当前用户详情信息
+function* saveInfo(action: any) {
   yield put({
-    type: "IS_LOGIN",
+    type: "SAVE_INFO",
     payload: action.payload,
   });
 }
 
-export { isLogin };
+export {  saveInfo };

@@ -6,14 +6,26 @@
   align-items: center;
 
   :global {
-    .ant-form-item {
+    .ant-form{
       width: 100%;
     }
   }
 
   .avatar {
-    width: 150px;
-    height: 150px;
+    width: 180px;
+    height: 180px;
     margin-bottom: 30px;
+    border-radius: 50%;
+  }
+}
+
+.telWrapper{
+  width: 100%;
+  display: flex;
+
+  :global{
+    .ant-space-item:nth-of-type(1){
+      flex: 1;
+    }
   }
 }

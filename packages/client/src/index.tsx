@@ -1,4 +1,4 @@
-import 'antd/dist/antd.css';
+import 'antd/dist/antd.css'
 
 import App from "./App";
 import {Provider} from 'react-redux'

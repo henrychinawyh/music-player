@@ -1,13 +1,16 @@
 const iniitalState = {
   num: 2,
+  info: null,
 };
 
 const loginReducer = (state = iniitalState, action: any) => {
+  console.log(action, "action++++");
+
   switch (action.type) {
-    case "IS_LOGIN":
+    case "saveInfo":
       return {
         ...state,
-        num: action.payload,
+        info: action.payload,
       };
 
     default:

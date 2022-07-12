@@ -1,0 +1,45 @@
+.main {
+  width: 100vw;
+  height: 100vh;
+  .backgroundImage{
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    left: 0;
+    z-index: 0;
+    opacity: 1;
+  }
+
+
+  :global {
+    .ant-layout {
+      background: none;
+    }
+  }
+
+  .basicLayout {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    :global {
+      .ant-layout-sider,
+      .ant-layout-header,
+      .ant-layout-content,
+      .ant-layout-footer {
+        background: none;
+      }
+    }
+
+    .body {
+      display: flex;
+      flex-direction: row;
+
+      .content {
+        .musicContent{
+          padding: 36px;
+          padding-top: 12px;
+        }
+      }
+    }
+  }
+}

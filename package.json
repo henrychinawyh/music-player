@@ -3,5 +3,8 @@
   "private": true,
   "devDependencies": {
     "lerna": "^5.1.4"
+  },
+  "dependencies": {
+    "umi-request": "^1.4.0"
   }
 }

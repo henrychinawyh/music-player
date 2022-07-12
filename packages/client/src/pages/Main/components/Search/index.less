@@ -1,0 +1,21 @@
+.avatar {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  .nickName {
+    flex: 1;
+    margin-left: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: no-wrap;
+    word-break: break-all;
+  }
+}
+
+.search {
+  :global {
+    .ant-input-group-wrapper {
+      vertical-align: middle;
+    }
+  }
+}
