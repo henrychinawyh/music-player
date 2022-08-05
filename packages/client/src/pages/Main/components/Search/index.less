@@ -2,8 +2,10 @@
   display: flex;
   align-items: center;
   cursor: pointer;
+  overflow: hidden;
+  white-space: nowrap;
 
-  span{
+  span {
     display: block;
   }
 
@@ -19,8 +21,8 @@
 
 .search {
   :global {
-    .ant-input-group-wrapper {
-      vertical-align: middle;
+    .ant-select-show-search {
+      width: 100%;
     }
   }
 }

@@ -81,7 +81,7 @@ const Avatar: React.FC<AvatarInterface> = (props) => {
     <Dropdown overlay={menu()}>
       <div className={styles.avatar}>
         <AntdAvatar
-          size={50}
+          size={32}
           icon={<img src={`${info?.avatarUrl}`} alt="" /> || <UserOutlined />}
         />
         <span className={styles.nickName}>{info?.nickname}</span>
