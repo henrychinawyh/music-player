@@ -153,10 +153,5 @@
       "react-app"
     ]
   },
-  "devDependencies": {},
-  "config": {
-    "commitizen": {
-      "path": "node_modules/cz-customizable"
-    }
-  }
+  "devDependencies": {}
 }
