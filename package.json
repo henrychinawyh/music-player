@@ -2,9 +2,18 @@
   "name": "root",
   "private": true,
   "devDependencies": {
+    "cz-customizable": "^6.9.1",
     "lerna": "^5.1.4"
+  },
+  "scripts": {
+    "commit": "git add . && git cz"
   },
   "dependencies": {
     "umi-request": "^1.4.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-customizable"
+    }
   }
 }
