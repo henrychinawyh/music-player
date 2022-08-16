@@ -16,8 +16,8 @@ import styles from "./index.less";
  * @name 首页
  * @Author: 留白-王宇航
  * @Date: 2022-07-11 10:10:18
- * @Last Modified by: wangyuhang
- * @Last Modified time: 2022-08-04 17:55:26
+ * @Last Modified by: mikey.zhaopeng
+ * @Last Modified time: 2022-08-15 18:00:38
  */
 
 interface MainInterface {
@@ -68,15 +68,17 @@ const Main: React.FC<MainInterface> = memo((props) => {
             </Col>
           </Row>
         </Header>
+
         <Layout className={styles.body}>
           <Sider width={400} className={styles.sider}>
             <SideMenu />
           </Sider>
           <Layout className={styles.content}>
             <Content className={styles.musicContent}><Outlet /></Content>
-            <Footer>1</Footer>
           </Layout>
         </Layout>
+
+        <Footer>1</Footer>
       </Layout>
     </div>
   );

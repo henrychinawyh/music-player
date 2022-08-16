@@ -4,6 +4,7 @@ import Login from "../pages/Login";
 import Main from "../pages/Main";
 import MainPage from "../pages/MainPage";
 import MusicMainPage from '../pages/MusicMainPage'
+import Like from '../pages/Like'
 
 // const routes = [
 //   {
@@ -41,6 +42,10 @@ const routes = [
         path: "mainPage",
         element: <MainPage />,
       },
+      {
+        path: "like",
+        element: <Like />
+      }
     ],
   },
   {

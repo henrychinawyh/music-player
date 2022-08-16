@@ -9,6 +9,7 @@
     "commit": "git add . && git cz"
   },
   "dependencies": {
+    "await-to-js": "^3.0.0",
     "umi-request": "^1.4.0"
   },
   "config": {

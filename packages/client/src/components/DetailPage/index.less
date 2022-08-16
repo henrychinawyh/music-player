@@ -1,0 +1,65 @@
+.marginText(@left:5px, @right:10px) {
+  margin-left: @left;
+  margin-right: @right;
+}
+
+.header {
+  display: flex;
+  overflow: hidden;
+
+  .coverImg {
+    img {
+      width: 150px;
+      height: 150px;
+    }
+  }
+
+  .headerContent {
+    flex: 1;
+    margin-left: 30px;
+    display: flex;
+    flex-direction: column;
+    > p {
+      margin-bottom: 10px;
+    }
+
+    > p.title {
+      display: flex;
+      align-items: center;
+
+      font-size: 24px;
+
+      .titleIcon {
+        .marginText();
+      }
+
+      .titleName {
+        flex: 1;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+    }
+
+    > p.createInfo {
+      display: flex;
+      align-items: center;
+
+      .creator {
+        .marginText(10px,15px);
+      }
+
+      .createTime {
+        flex: 1;
+      }
+    }
+
+    > p.btns {
+      :global {
+        .ant-btn {
+          margin-right: 15px;
+        }
+      }
+    }
+  }
+}

@@ -26,7 +26,7 @@ import bg3 from "../../assets/images/bg3.png";
 import bg4 from "../../assets/images/bg4.png";
 import classnames from "classnames";
 import { connect } from "react-redux";
-import cookie from "../../utils/cookie";
+import cookie, { getCookie } from "../../utils/cookie";
 import { gutter } from "../../utils/const";
 import styles from "./index.less";
 import { useNavigate } from "react-router-dom";
@@ -55,7 +55,7 @@ const LoginPage = (props: any) => {
     if (scanImg && loginType === "scan") {
       const poller = async () => {
         timer && clearTimeout(timer);
-        if (key) {
+        if (key && getCookie('id')) {
           const res = await pollerScanCode({ key, timeStamp: Date.now() });
           const { code, message } = res || {};
           setScanCode(code);

@@ -17,7 +17,7 @@ const MySearch = () => {
       <Col span={12}>
         <div className={styles.search}>
           <Select
-            size="small"
+            size="middle"
             showSearch
             // value={value}
             // placeholder={props.placeholder}

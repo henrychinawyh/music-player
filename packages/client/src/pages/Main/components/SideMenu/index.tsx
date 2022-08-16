@@ -2,8 +2,8 @@
  * @name: 侧边菜单栏
  * @Author: 留白-王宇航
  * @Date: 2022-07-11 18:00:16
- * @Last Modified by: 留白-王宇航
- * @Last Modified time: 2022-07-11 18:26:10
+ * @Last Modified by: mikey.zhaopeng
+ * @Last Modified time: 2022-08-15 16:53:49
  */
 
 import {
@@ -14,10 +14,13 @@ import {
 } from "@ant-design/icons";
 
 import { Menu } from "antd";
-import styles from './index.less'
+import styles from "./index.less";
 import { useMemo } from "react";
+import { useNavigate } from "react-router-dom";
 
 const SideMenu = () => {
+  const navigate = useNavigate();
+
   const items = useMemo(
     () => [
       {
@@ -44,7 +47,16 @@ const SideMenu = () => {
     []
   );
 
-  return <Menu className={styles.sideMenu} items={items} mode="vertical" />;
+  return (
+    <Menu
+      onClick={({ item, key }) => {
+        navigate(`/${key}`, { replace: true });
+      }}
+      className={styles.sideMenu}
+      items={items}
+      mode="vertical"
+    />
+  );
 };
 
 export default SideMenu;
