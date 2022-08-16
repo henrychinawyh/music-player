@@ -1,8 +1,8 @@
 /*
  * @Author: mikey.zhaopeng
  * @Date: 2022-08-15 16:48:57
- * @Last Modified by: mikey.zhaopeng
- * @Last Modified time: 2022-08-16 11:04:05
+ * @Last Modified by: 小王同学
+ * @Last Modified time: 2022-08-16 18:15:31
  */
 
 import React, { useEffect, useState } from "react";
@@ -56,7 +56,6 @@ const Like: React.FC<LikeProps> = (props) => {
       message.error("查询列表歌曲信息失败");
       throw err;
     }
-    console.log(data, "+++++");
 
     const { songs: songsList } = data;
 
@@ -72,14 +71,10 @@ const Like: React.FC<LikeProps> = (props) => {
         sMessage: "我喜欢的",
       };
 
-      console.log(props, "_+_+_props");
-
       setHeaderInfo(header);
-      setSongs(songsList);
+      setSongs(songsList.map((item: any) => ({ ...item, like: true })));
     }
   };
-
-  console.log(headerInfo);
 
   return (
     <div className={styles.like}>

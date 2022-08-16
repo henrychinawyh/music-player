@@ -1,8 +1,8 @@
 /*
  * @Author: 王宇航
  * @Date: 2022-08-15 16:58:52
- * @Last Modified by: mikey.zhaopeng
- * @Last Modified time: 2022-08-16 11:06:12
+ * @Last Modified by: 小王同学
+ * @Last Modified time: 2022-08-16 17:56:17
  */
 
 import { Avatar, Button, Tag } from "antd";
@@ -83,7 +83,11 @@ const DetailHeader: React.FC<DetailHeaderProps> = (props) => {
             {tags?.length &&
               tags.map((item: any) => {
                 if (typeof item === "string") {
-                  return <Tag color="#1890ff">{item}</Tag>;
+                  return (
+                    <Tag key={item} color="#1890ff">
+                      {item}
+                    </Tag>
+                  );
                 }
 
                 return null;

@@ -6,16 +6,16 @@
  * @Last Modified time: 2022-08-05 15:27:55
  */
 
-import { Button, Col, Form, Input, Row, message, Radio } from "antd";
+import { Button, Col, Form, Input, Radio, Row, message } from "antd";
 
 import NavHeader from "../../components/NavHeader";
 import { SEX } from "../../utils/enum";
+import UploadAvatar from "./components/UploadAvatar";
 import { connect } from "react-redux";
 import dayjs from "dayjs";
 import styles from "./index.less";
 import { updateInfo } from "./services";
 import { useEffect } from "react";
-import UploadAvatar from "./components/UploadAvatar";
 
 interface MainPageInterface {
   info: any;
@@ -23,7 +23,6 @@ interface MainPageInterface {
 
 const MainPage: React.FC<MainPageInterface> = (props) => {
   const { info } = props || {};
-  console.log(info,'info')
   const [form] = Form.useForm();
 
   // 设置表单值
@@ -44,7 +43,7 @@ const MainPage: React.FC<MainPageInterface> = (props) => {
     const res = await updateInfo({
       ...values,
       birthday: `${dayjs(values?.birthday).valueOf()}`,
-      gender: values?.gender
+      gender: values?.gender,
     });
 
     const { code } = res || {};

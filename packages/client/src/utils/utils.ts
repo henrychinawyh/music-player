@@ -1,3 +1,5 @@
+import dayjs from "dayjs";
+
 // placeholder占位符
 const placeholder = "--";
 
@@ -14,4 +16,23 @@ const dataFormat = (obj: any) => {
   return obj;
 };
 
-export { dataFormat, placeholder };
+// 将毫秒转换为时分格式
+const timeFilter = (time: any): string => {
+  if (time === 0 || time === placeholder || !time) {
+    return placeholder;
+  }
+
+  const day = dayjs(0).millisecond(parseInt(time));
+  let str = "";
+  if (day.minute() >= 0) {
+    str += day.minute() + ":";
+  }
+
+  if (day.second() >= 0) {
+    str += day.second();
+  }
+
+  return str;
+};
+
+export { dataFormat, placeholder, timeFilter };

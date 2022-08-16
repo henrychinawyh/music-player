@@ -1,3 +1,6 @@
+import type { DrawerProps } from "antd";
+import type { ReactNode } from "react";
+
 export interface DetailPageProps {
   songs?: any[];
   headerInfo?: DetailHeaderProps;
@@ -8,7 +11,8 @@ export interface DetailMainProps {
   [keys: string]: any;
 }
 
-export interface DetailContentProps {
+export interface DetailCommentProps extends DrawerProps {
+  customNode?: ReactNode;
   [keys: string]: any;
 }
 

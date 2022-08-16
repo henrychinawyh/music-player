@@ -16,14 +16,11 @@ interface PassWordProps {
   form: FormInstance<any>;
 }
 const PassWord: React.FC<PassWordProps> = ({ form }) => {
-
   // 发送验证码
-  const sendCode =async ()=>{
-    const phone = await form.validateFields(['phone'])
-    const code = await sendVerifyCode(phone)
-
-    console.log(code,'_+_+_+_')
-  }
+  const sendCode = async () => {
+    const phone = await form.validateFields(["phone"]);
+    const code = await sendVerifyCode(phone);
+  };
 
   return (
     <div className={styles.password}>

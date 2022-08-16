@@ -5,16 +5,17 @@
  * @Last Modified time: 2022-08-05 15:27:33
  */
 
-import { message, Upload } from "antd";
+import { LoadingOutlined, PlusOutlined } from "@ant-design/icons";
 import type {
   RcFile,
   UploadChangeParam,
   UploadFile,
 } from "antd/lib/upload/interface";
+import { Upload, message } from "antd";
 import { memo, useEffect, useState } from "react";
-import { UploadAvatarProps } from "../interface";
-import { LoadingOutlined, PlusOutlined } from "@ant-design/icons";
+
 import { Limit_Img_Size } from "../../../utils/const";
+import { UploadAvatarProps } from "../interface";
 import { connect } from "react-redux";
 
 const UploadAvatar: React.FC<UploadAvatarProps> = memo((props) => {
@@ -57,7 +58,6 @@ const UploadAvatar: React.FC<UploadAvatarProps> = memo((props) => {
 
   //   上传时进度的变化
   const handleChange = (uploadInfo: UploadChangeParam<UploadFile>) => {
-    console.log(uploadInfo.file)
     const { status, response } = uploadInfo.file || {};
     const { data } = response || {};
 
@@ -65,7 +65,10 @@ const UploadAvatar: React.FC<UploadAvatarProps> = memo((props) => {
       message.destroy();
       message.success("上传成功");
       const { url, imgId } = data;
-      let tempInfo =Object.assign({},info,{avatarImgIdStr: imgId, avatarUrl: url})
+      let tempInfo = Object.assign({}, info, {
+        avatarImgIdStr: imgId,
+        avatarUrl: url,
+      });
 
       dispatch({
         type: "saveInfo",

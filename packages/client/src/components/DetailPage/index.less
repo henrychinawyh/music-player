@@ -3,61 +3,66 @@
   margin-right: @right;
 }
 
-.header {
+.detailPage {
   display: flex;
-  overflow: hidden;
+  flex-direction: column;
 
-  .coverImg {
-    img {
-      width: 150px;
-      height: 150px;
-    }
-  }
-
-  .headerContent {
-    flex: 1;
-    margin-left: 30px;
+  .header {
     display: flex;
-    flex-direction: column;
-    > p {
-      margin-bottom: 10px;
+    overflow: hidden;
+
+    .coverImg {
+      img {
+        width: 150px;
+        height: 150px;
+      }
     }
 
-    > p.title {
+    .headerContent {
+      flex: 1;
+      margin-left: 30px;
       display: flex;
-      align-items: center;
-
-      font-size: 24px;
-
-      .titleIcon {
-        .marginText();
+      flex-direction: column;
+      > p {
+        margin-bottom: 10px;
       }
 
-      .titleName {
-        flex: 1;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
+      > p.title {
+        display: flex;
+        align-items: center;
+
+        font-size: 24px;
+
+        .titleIcon {
+          .marginText();
+        }
+
+        .titleName {
+          flex: 1;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
       }
-    }
 
-    > p.createInfo {
-      display: flex;
-      align-items: center;
+      > p.createInfo {
+        display: flex;
+        align-items: center;
 
-      .creator {
-        .marginText(10px,15px);
+        .creator {
+          .marginText(10px,15px);
+        }
+
+        .createTime {
+          flex: 1;
+        }
       }
 
-      .createTime {
-        flex: 1;
-      }
-    }
-
-    > p.btns {
-      :global {
-        .ant-btn {
-          margin-right: 15px;
+      > p.btns {
+        :global {
+          .ant-btn {
+            margin-right: 15px;
+          }
         }
       }
     }
