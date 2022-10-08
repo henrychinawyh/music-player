@@ -1,9 +1,10 @@
 import { Col, Layout, Row } from "antd";
 import { Content, Footer, Header } from "antd/lib/layout/layout";
-import { MutableRefObject, memo, useEffect, useRef } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
+import { memo, useEffect } from "react";
 
 import Avatar from "./components/Search/Avatar";
+import Player from "../../components/Player";
 import Search from "./components/Search";
 import SideMenu from "./components/SideMenu";
 import Sider from "antd/lib/layout/Sider";
@@ -17,7 +18,7 @@ import styles from "./index.less";
  * @Author: 留白-王宇航
  * @Date: 2022-07-11 10:10:18
  * @Last Modified by: mikey.zhaopeng
- * @Last Modified time: 2022-08-15 18:00:38
+ * @Last Modified time: 2022-10-08 10:44:15
  */
 
 interface MainInterface {
@@ -53,10 +54,10 @@ const Main: React.FC<MainInterface> = memo((props) => {
   };
 
   return (
-    <div  className={styles.main}>
+    <div className={styles.main}>
       <Layout className={styles.basicLayout}>
         <Header className={styles.header}>
-          <Row align="middle" >
+          <Row align="middle">
             <Col span={22}>
               {/* 搜索栏 */}
               <Search />
@@ -74,11 +75,15 @@ const Main: React.FC<MainInterface> = memo((props) => {
             <SideMenu />
           </Sider>
           <Layout className={styles.content}>
-            <Content className={styles.musicContent}><Outlet /></Content>
+            <Content className={styles.musicContent}>
+              <Outlet />
+            </Content>
           </Layout>
         </Layout>
 
-        <Footer>1</Footer>
+        <Footer>
+          <Player />
+        </Footer>
       </Layout>
     </div>
   );

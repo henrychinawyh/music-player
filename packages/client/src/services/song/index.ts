@@ -6,3 +6,10 @@ export async function getSongDetail(params: { ids: string }) {
     params,
   });
 }
+
+// 获取歌曲链接
+export async function getSongURL(params: { id: string }) {
+  return request.get("/song/url", {
+    params,
+  });
+}

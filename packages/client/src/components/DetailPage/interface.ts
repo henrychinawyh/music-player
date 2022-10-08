@@ -4,6 +4,7 @@ import type { ReactNode } from "react";
 export interface DetailPageProps {
   songs?: any[];
   headerInfo?: DetailHeaderProps;
+  isLoading?:boolean
   [keys: string]: any;
 }
 

@@ -5,17 +5,18 @@
  * @Last Modified time: 2022-08-16 18:47:44
  */
 
-import { memo, useEffect, useRef, useState } from "react";
+import { memo, useEffect, useState } from "react";
 
 import type { DetailMainProps } from "../interface";
 import { HeartFilled } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import { Table } from "antd";
+import { connect } from "react-redux";
 import styles from "../index.less";
 import { timeFilter } from "../../../utils/utils";
 
 const DetailMain: React.FC<DetailMainProps> = memo((props) => {
-  const { songs } = props;
+  const { songs, dispatch } = props;
   const [dataSource, setDataSource] = useState([]);
 
   useEffect(() => {
@@ -46,7 +47,11 @@ const DetailMain: React.FC<DetailMainProps> = memo((props) => {
       dataIndex: "ar",
       render: (t: any[]) => {
         if (t?.length) {
-          return t.map((item) => <Link to="">{item.name}</Link>);
+          return t.map((item) => (
+            <Link to="" key={item.id}>
+              {item.name}
+            </Link>
+          ));
         }
 
         return "未知歌手";
@@ -74,16 +79,26 @@ const DetailMain: React.FC<DetailMainProps> = memo((props) => {
       title: "操作",
       key: "opt",
       dataIndex: "opt",
-      render: () => <></>,
+      render: (t: any, r: any) => (
+        <span
+          onClick={() => {
+            dispatch({
+              type: "updatePlayList",
+              payload: r.id,
+            });
+          }}
+        >
+          播放
+        </span>
+      ),
     },
   ];
 
-  console.log(dataSource, "+++++++++");
-
+  console.log(dataSource, "++++");
   return (
     <div className={styles.songsList}>
       <Table
-        rowKey="id"
+        rowKey={"id"}
         columns={columns}
         dataSource={dataSource}
         onRow={(r) => ({
@@ -97,4 +112,4 @@ const DetailMain: React.FC<DetailMainProps> = memo((props) => {
   );
 });
 
-export default DetailMain;
+export default connect()(DetailMain);

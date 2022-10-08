@@ -4,8 +4,6 @@ const iniitalState = {
 };
 
 const loginReducer = (state = iniitalState, action: any) => {
-  console.log(action, "action++++");
-
   switch (action.type) {
     case "saveInfo":
       return {

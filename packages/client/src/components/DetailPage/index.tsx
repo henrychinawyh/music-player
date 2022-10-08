@@ -10,18 +10,21 @@ import type { DetailPageProps } from "./interface";
 import Dynamic from "../Dynamic";
 import React from "react";
 import styles from "./index.less";
+import { Spin } from "antd";
 
 const DetailPage: React.FC<DetailPageProps> = (props) => {
-  const { headerInfo, songs } = props || {};
+  const { headerInfo, songs, isLoading } = props || {};
 
   return (
     <div className={styles.detailPage}>
-      {headerInfo && <DetailHeader headerInfo={headerInfo} />}
+      <Spin spinning={isLoading} tip="加载中，请稍后..." className={styles.spinClass}>
+        {headerInfo && <DetailHeader headerInfo={headerInfo} />}
 
-      <div className={styles.songs}>
-        <Dynamic loader={() => import("./Main")} songs={songs} />
-      </div>
-      <Dynamic loader={() => import("./Comment")} />
+        <div className={styles.songs}>
+          <Dynamic loader={() => import("./Main")} songs={songs} />
+        </div>
+        <Dynamic loader={() => import("./Comment")} />
+      </Spin>
     </div>
   );
 };

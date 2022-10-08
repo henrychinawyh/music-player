@@ -5,7 +5,7 @@
  * @Last Modified time: 2022-08-16 18:15:31
  */
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useTransition } from "react";
 
 import { DetailHeaderProps } from "../../components/DetailPage/interface";
 import DetailPage from "../../components/DetailPage";
@@ -24,6 +24,7 @@ const Like: React.FC<LikeProps> = (props) => {
   const [likeIds, setLikeIds] = useState([]);
   const [songs, setSongs] = useState([]);
   const [headerInfo, setHeaderInfo] = useState<DetailHeaderProps>();
+  const [isLoading, startTransition] = useTransition();
 
   useEffect(() => {
     getListIds();
@@ -31,7 +32,9 @@ const Like: React.FC<LikeProps> = (props) => {
 
   useEffect(() => {
     if (likeIds?.length) {
-      getLikeSongsDetail();
+      startTransition(() => {
+        getLikeSongsDetail();
+      });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [likeIds]);
@@ -78,7 +81,7 @@ const Like: React.FC<LikeProps> = (props) => {
 
   return (
     <div className={styles.like}>
-      <DetailPage songs={songs} headerInfo={headerInfo} />
+      <DetailPage songs={songs} headerInfo={headerInfo} isLoading={isLoading} />
     </div>
   );
 };
