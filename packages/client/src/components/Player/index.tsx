@@ -2,7 +2,7 @@
  * @Author: wangyuhang
  * @Date: 2022-10-08 10:29:12
  * @Last Modified by: wangyuhang
- * @Last Modified time: 2022-10-28 17:43:16
+ * @Last Modified time: 2022-10-28 17:47:13
  */
 
 import {
@@ -36,20 +36,20 @@ const Player: React.FC<any> = (props) => {
 
   const [isPlay, setIsPlay] = useState(false);
   const [url, setURL] = useState("");
-  const [max, setMax] = useState<number>(0);
-  const [endTime, setEndTime] = useState("05:00");
   const audioRef = useRef<HTMLAudioElement>(null);
   const [isPending, startTransition] = useTransition();
-  const timer = useRef(null);
 
   const [value, setValue] = useState(0);
-  const [startTime, setStartTime] = useState("00:00");
 
   // 初始化获取已经缓存的id，并获取对应的缓存歌曲信息
   useEffect(() => {
     catchPlayListByIds();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(() => {
+    console.log(audioRef?.current?.currentTime);
+  }, [audioRef?.current?.currentTime]);
 
   // 获取缓存歌曲列表
   const catchPlayListByIds = async () => {
@@ -70,16 +70,7 @@ const Player: React.FC<any> = (props) => {
     if (playList?.[0]?.url) {
       setURL(playList?.[0]?.url);
       setIsPlay(true);
-      setMax(Math.ceil(playList?.[0]?.dt / 1000));
-      setEndTime(timeFilter(playList?.[0]?.dt));
-      if (timer.current) {
-        // clearInterval()
-      }
     } else {
-      if (timer.current) {
-        clearInterval(timer.current);
-        timer.current = null;
-      }
       setURL("");
       setIsPlay(false);
     }
@@ -134,19 +125,19 @@ const Player: React.FC<any> = (props) => {
         />
       </Space>
       <div className={styles.progress}>
-        {startTime}
+        {timeFilter(audioRef?.current?.currentTime)}
         <Slider
           min={0}
-          max={max}
+          max={audioRef?.current?.duration || 0}
           onChange={(val) => {
             const time = moment.duration(val, "seconds");
-            setStartTime(
-              moment({
-                h: time.hours(),
-                m: time.minutes(),
-                s: time.seconds(),
-              }).format("mm:ss")
-            );
+            // setStartTime(
+            //   moment({
+            //     h: time.hours(),
+            //     m: time.minutes(),
+            //     s: time.seconds(),
+            //   }).format("mm:ss")
+            // );
             startTransition(() => {
               setValue(val);
             });
@@ -154,7 +145,7 @@ const Player: React.FC<any> = (props) => {
           value={value}
           className={styles.slider}
         />
-        {endTime}
+        {timeFilter(audioRef?.current?.duration || 0)}
       </div>
       <Space className={styles.otherButtons}>
         <Volumns audioRef={audioRef} />
