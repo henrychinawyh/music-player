@@ -1,8 +1,8 @@
 /*
  * @Author: 王宇航
  * @Date: 2022-08-15 16:58:52
- * @Last Modified by: 小王同学
- * @Last Modified time: 2022-08-16 18:47:44
+ * @Last Modified by: wangyuhang
+ * @Last Modified time: 2022-10-28 17:11:45
  */
 
 import { memo, useEffect, useState } from "react";
@@ -81,10 +81,13 @@ const DetailMain: React.FC<DetailMainProps> = memo((props) => {
       dataIndex: "opt",
       render: (t: any, r: any) => (
         <span
+          style={{
+            cursor: "pointer",
+          }}
           onClick={() => {
             dispatch({
               type: "updatePlayList",
-              payload: r.id,
+              payload: [r],
             });
           }}
         >
@@ -94,7 +97,6 @@ const DetailMain: React.FC<DetailMainProps> = memo((props) => {
     },
   ];
 
-  console.log(dataSource, "++++");
   return (
     <div className={styles.songsList}>
       <Table
